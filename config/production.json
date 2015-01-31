@@ -1,0 +1,9 @@
+{
+    "db": {
+        "dbname": "postit_prod",
+        "user": "root",
+        "password": "abcde",
+        "host": "localhost",
+        "driver": "pdo_mysql"
+    }
+}
