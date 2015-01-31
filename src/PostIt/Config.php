@@ -27,7 +27,7 @@ class Config
     public function __construct($path)
     {
         if (!file_exists($path)) {
-            throw new FileNotFoundException($path);
+            throw new Exception\FileNotFoundException($path);
         }
 
         $json = file_get_contents($path);
