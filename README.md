@@ -39,6 +39,7 @@ sudo chmod -R 0777 app/views/cache/
 * Bootstrapping
 * Resource
 * Makefile
-* NO caching
+* NO output caching
+* NO query caching
 * NO log
 * NO sanitizing/filtering

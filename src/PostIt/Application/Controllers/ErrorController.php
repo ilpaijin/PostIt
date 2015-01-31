@@ -1,6 +1,6 @@
 <?php
 
-namespace PostIt\Controllers;
+namespace PostIt\Application\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +22,6 @@ class ErrorController
 
     public function server(Request $request)
     {
-        return new Response('fff', 505);
+        return new Response('fff', 500);
     }
 }

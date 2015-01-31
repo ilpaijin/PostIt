@@ -2,7 +2,7 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-use PostIt\Environment;
+use PostIt\Application\Environment;
 
 $app->containerSet('debug', Environment::isDevelopment() ? true : false);
 

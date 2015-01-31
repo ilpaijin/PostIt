@@ -1,8 +1,8 @@
 <?php
 
-namespace PostIt;
+namespace PostIt\Application;
 
-use PostIt\Contracts\Containerable;
+use PostIt\Application\Contracts\Containerable;
 
 use InvalidArgumentException;
 

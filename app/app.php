@@ -3,13 +3,13 @@
 require __DIR__."/../vendor/autoload.php";
 require_once __DIR__.'/../vendor/twig/twig/lib/Twig/Autoloader.php';
 
-use PostIt\Container;
-use PostIt\Environment;
-use PostIt\Config;
+use PostIt\Application\Container;
+use PostIt\Application\Environment;
+use PostIt\Application\Config;
 
 $routes = require __DIR__.'/routes.php';
 
-$app = new PostIt\Application(new PostIt\Container(), $routes);
+$app = new PostIt\Application\Application(new PostIt\Application\Container(), $routes);
 
 require __DIR__.'/global.php';
 

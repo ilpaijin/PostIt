@@ -1,11 +1,11 @@
 <?php
 
-namespace PostIt;
+namespace PostIt\Application;
 
 use \Exception;
 
-use PostIt\Contracts\Containerable;
-use PostIt\Controllers\ErrorController;
+use PostIt\Application\Contracts\Containerable;
+use PostIt\Application\Controllers;
 
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\HttpFoundation\Request;
@@ -98,9 +98,9 @@ class Application
 
             return call_user_func(array($controller,$action), $request);
         } catch (ResourceNotFoundException $e) {
-            return call_user_func(array(new ErrorController, 'notFound'), $request);
+            return call_user_func(array(new Controllers\ErrorController, 'notFound'), $request);
         } catch (Exception $e) {
-            return call_user_func(array(new ErrorController, 'server'), $request);
+            return call_user_func(array(new Controllers\ErrorController, 'server'), $request);
         }
     }
 }

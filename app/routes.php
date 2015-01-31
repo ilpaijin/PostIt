@@ -9,7 +9,12 @@ use Symfony\Component\Routing\Route;
 $routes = new RouteCollection();
 
 $routes->add('/', new Route('/', array(
-    '_controller' => array('PostIt\Controllers\IndexController', 'welcomeAction')
+    '_controller' => array('PostIt\Application\Controllers\IndexController', 'welcomeAction')
+)));
+
+$routes->add('/login', new Route('login', array(
+    '_controller' => array('PostIt\Application\Controllers\LoginController', 'loginAction'),
+    // array(), array(), '', array(), array('POST')
 )));
 
 return $routes;

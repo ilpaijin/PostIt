@@ -1,6 +1,6 @@
 <?php
 
-namespace PostIt\Contracts;
+namespace PostIt\Application\Contracts;
 
 interface Containerable
 {

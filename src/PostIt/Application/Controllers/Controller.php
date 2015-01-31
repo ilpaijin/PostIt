@@ -1,8 +1,8 @@
 <?php
 
-namespace PostIt\Controllers;
+namespace PostIt\Application\Controllers;
 
-use PostIt\Contracts\Containerable;
+use PostIt\Application\Contracts\Containerable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
