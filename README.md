@@ -21,11 +21,9 @@ make install
 will run composer and install mysql tables
 
 ### Engineering
+* SOLID principle
 * Decoupling Config files
 * Console commands/processes
-* Bootstrapping
-* Resource
-* Makefile
 * Environment handling
 * DataBase Abstraction Layer
 * Composer usage and dependencies handling
@@ -33,3 +31,6 @@ will run composer and install mysql tables
 * Designing by interface not by concrete implementation
 * Interface naming consistent with the language (PHP)
 * Error/Exception handling
+* Bootstrapping
+* Resource
+* Makefile
