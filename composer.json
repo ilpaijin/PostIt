@@ -1,0 +1,12 @@
+{
+    "require":{
+        "monolog/monolog": "~1.4",
+        "symfony/console": "~2.2",
+        "doctrine/dbal": "~2.3"
+    },
+    "autoload":{
+        "psr-4": {
+            "PostIt\\":"src/PostIt"
+        }
+    }
+}
