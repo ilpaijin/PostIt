@@ -4,7 +4,9 @@ require __DIR__."/../vendor/autoload.php";
 
 use PostIt\Container;
 
-$app = new PostIt\Application(new PostIt\Container());
+$routes = require __DIR__.'/routes.php';
+
+$app = new PostIt\Application(new PostIt\Container(), $routes);
 
 require __DIR__.'/global.php';
 
