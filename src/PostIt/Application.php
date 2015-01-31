@@ -92,9 +92,11 @@ class Application
 
             $request->attributes->add($matched, EXTR_SKIP);
 
-            $class = $matched['_controller'];
+            list($controller, $action) = $matched['_controller'];
 
-            return call_user_func(list($controller, $action) = $class, $request);
+            $controller = new $controller($this->container);
+
+            return call_user_func(array($controller,$action), $request);
         } catch (ResourceNotFoundException $e) {
             return call_user_func(array(new ErrorController, 'notFound'), $request);
         } catch (Exception $e) {

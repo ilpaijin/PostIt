@@ -13,12 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
  * @license
  * @version    Release: @package_version@
  */
-class IndexController
+class IndexController extends Controller
 {
-    public function showAction(Request $request)
+    public function welcomeAction(Request $request)
     {
-        var_dump($request->query->all());
-        exit;
-        return new Response('Nope, this is not a leap year.');
+        return $this->render('welcome', array('a' => 'ciao'));
     }
 }

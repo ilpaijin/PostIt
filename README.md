@@ -20,6 +20,11 @@ make install
 `
 will run composer and install mysql tables
 
+### permission
+`
+sudo chmod -R 0777 app/views/cache/
+`
+
 ### Engineering
 * SOLID principle
 * Decoupling Config files

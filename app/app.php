@@ -13,14 +13,37 @@ require __DIR__.'/global.php';
 $env = getenv('ENV') ? getenv('ENV') : 'production';
 
 $app->containerSet('env', $env);
-$app->containerSet('template_path', __DIR__.'/../src/PostIt/views');
+$app->containerSet('template_path', __DIR__.'/views');
 $app->containerSet('config', new PostIt\Config(__DIR__."/../config/".$env.".json"));
 
+
+/*
+|--------------------------------------------------------------------------
+| Doctrine DBAL Service
+|--------------------------------------------------------------------------
+|
+*/
 $db = \Doctrine\DBAL\DriverManager::getConnection(
     $app->containerGet('config')->get('db'),
     new \Doctrine\DBAL\Configuration()
 );
-
 $app->containerSet('db', $db);
+
+/*
+|--------------------------------------------------------------------------
+| Twig Service
+|--------------------------------------------------------------------------
+|
+*/
+require_once __DIR__.'/../vendor/twig/twig/lib/Twig/Autoloader.php';
+
+Twig_Autoloader::register();
+
+$loader = new Twig_Loader_Filesystem($app->containerGet('template_path'));
+$twig = new Twig_Environment($loader, array(
+    'cache' => __DIR__.'/views/cache',
+    'debug' => $app->containerGet('env')
+));
+$app->containerSet('twig', $twig);
 
 return $app;

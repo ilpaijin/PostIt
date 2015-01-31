@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Route;
 
 $routes = new RouteCollection();
 
-$routes->add('hello', new Route('/hello', array(
-    '_controller' => array(new PostIt\Controllers\IndexController, 'showAction')
+$routes->add('/', new Route('/', array(
+    '_controller' => array('PostIt\Controllers\IndexController', 'welcomeAction')
 )));
 
 return $routes;
