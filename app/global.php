@@ -2,8 +2,9 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
+use PostIt\Environment;
 
-$app->containerSet('debug', getenv('ENV') === 'development' ? true : false);
+$app->containerSet('debug', Environment::isDevelopment() ? true : false);
 
 if ('cli' !== php_sapi_name()) {
     ini_set('display_errors', 0);
