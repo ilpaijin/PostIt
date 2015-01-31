@@ -25,7 +25,7 @@ class Environment
     /**
      * Is Development?
      */
-    public function isDevelopment()
+    public static function isDevelopment()
     {
         return static::detect() === 'development';
     }
