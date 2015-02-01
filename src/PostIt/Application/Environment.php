@@ -19,6 +19,10 @@ class Environment
      */
     public static function detect()
     {
+        if (in_array(php_sapi_name(), array('cli', 'cli-server'))) {
+            return 'testing';
+        }
+
         return getenv('ENV') ? getenv('ENV') : 'production';
     }
 

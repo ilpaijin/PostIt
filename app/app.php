@@ -7,6 +7,8 @@ use PostIt\Application\Container;
 use PostIt\Application\Environment;
 use PostIt\Application\Config;
 
+date_default_timezone_set('Europe/Amsterdam');
+
 $routes = require __DIR__.'/routes.php';
 
 $app = new PostIt\Application\Application(new PostIt\Application\Container(), $routes);

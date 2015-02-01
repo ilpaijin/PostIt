@@ -14,17 +14,15 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PostIt\Commands;
-
 $app = require __DIR__."/../app/app.php";
 
-$console = new Application\Application();
+$console = new Application();
 
 $console
     ->register('init')
     ->setDescription('Initialize PostIt')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        Commands\Schemas::create($app->getService('db'));
+        Commands\Schemas::create($app->containerGet('db'));
     });
 
 $console->run();

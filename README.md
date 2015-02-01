@@ -1,6 +1,6 @@
 # PostIt!
 
-Creating a blog for fun
+Creating a blog for fun, from scratch
 
 ### Stack
 * Php 5.4
@@ -12,6 +12,8 @@ Creating a blog for fun
 ### Requirements
 * Create a vhost (see resource folder for example)
 * Create a db "postit"
+* `sudo chmod -R 0777 app/views/cache/`
+* Tune your files in config/
 
 #### Init
 
@@ -20,12 +22,8 @@ make install
 `
 will run composer and install mysql tables
 
-### permission
-`
-sudo chmod -R 0777 app/views/cache/
-`
-
 ### Engineering
+* MVC
 * SOLID principle
 * Decoupling Config files
 * Console commands/processes
@@ -43,3 +41,4 @@ sudo chmod -R 0777 app/views/cache/
 * NO query caching
 * NO log
 * NO sanitizing/filtering
+* NO event handling
