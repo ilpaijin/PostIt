@@ -76,7 +76,7 @@
 
         <div class="jumbotron">
             <div class="container">
-                <h1>What's the post you've liked the most?</h1>
+                <h1>What's the answer you've liked most?</h1>
                 <p>
                     <img src="/images/answers.png" alt="PostIt - the right answer to your question" />
                     For each good question there's always the right answer, and you can find it here.
@@ -91,8 +91,8 @@
                 <div class="col-md-8">
 
                     <h1 class="page-header">
-                        A good Questions
-                        <small>deserve a good answer!</small>
+                        A good Question
+                        <small>deserve a good Answer!</small>
                     </h1>
 
                     {% for post in posts %}
@@ -100,11 +100,11 @@
                             <a href="#">{{ post.title }}</a>
                         </h2>
                         <p class="lead">
-                            by <a href="index.php">{{ post.author_id }}</a>
+                            by <a href="index.php">{{ post.author }}</a>
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> {{ post.date_created }}</p>
                         <hr>
-                        <img class="img-responsive" src="{{  post.image }}" alt="">
+                        <img class="img-responsive" src="{{ img_path }}{{ post.image_name }}" alt="{{ post.image_name}}" title="{{post.image_title}}">
                         <hr>
                         <p>{{  post.body }}</p>
                         <div class="well">
@@ -137,7 +137,7 @@
 
                     <!-- Side Widget Well -->
                     <div class="well">
-                        <h4>Side Widget Well</h4>
+                        <h4>Side Widget</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                     </div>
 
@@ -152,7 +152,7 @@
             <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright © Your Website 2014</p>
+                        <p>Copyright © <a href="https://github.com/ilpaijin/PostIt">ilpaijin</a></p>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

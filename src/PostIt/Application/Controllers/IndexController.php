@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use PostIt\Repositories\PostRepository;
 use PostIt\Application\Session;
+use PostIt\Application\Config;
 
 /**
  *
@@ -24,7 +25,8 @@ class IndexController extends Controller
 
         return $this->render('newsfeed', array(
             'posts' => $this->postRepository->findAll(),
-            'user' => Session::get('user')
+            'user' => Session::get('user'),
+            'img_path' => $this->container->get('config')->get('cdn_static')
         ));
     }
 }

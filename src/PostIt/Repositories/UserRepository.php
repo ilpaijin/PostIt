@@ -12,8 +12,19 @@ namespace PostIt\Repositories;
 */
 class UserRepository extends EntityRepository
 {
+    /**
+    * Entity table
+    *
+    * @var string
+    */
     public $table = 'users';
 
+    /**
+    * Retrieve single result data
+    *
+    * @param integer $id
+    * @return mixed
+    */
     public function findOne($id)
     {
         try
@@ -30,6 +41,14 @@ class UserRepository extends EntityRepository
             return $e->getMessage();
         }
     }
+
+    /**
+     * To be moved from here
+     *
+     * @param  string $username
+     * @param  string $password
+     * @return mixed
+     */
     public function authenticate($username, $password)
     {
         try

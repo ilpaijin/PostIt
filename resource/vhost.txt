@@ -25,3 +25,33 @@
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 </VirtualHost>
+
+
+<VirtualHost *:80>
+
+    ServerName images.postit-local
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/postit/public/images
+
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory /var/www/html/postit/public/images/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+
+Add these lines to your hosts file:
+
+127.0.0.1	postit-local
+127.0.0.1   images.postit-local

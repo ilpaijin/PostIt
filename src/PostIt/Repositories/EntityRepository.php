@@ -14,13 +14,25 @@ use \Exception;
 */
 class EntityRepository
 {
+    /**
+     * Connection handler
+     *
+     * @var \Doctrine\DBAL\Connection
+     */
     protected $dbHandler;
 
+    /**
+     *
+     * @param \Doctrine\DBAL\Connection $dbHandler
+     */
     public function __construct($dbHandler)
     {
         $this->dbHandler = $dbHandler;
     }
 
+    /**
+     * [findAll description]
+     */
     public function findAll()
     {
         try

@@ -61,16 +61,29 @@ class Schemas
         $comments->addColumn('body', 'string');
         $comments->addColumn('user_id', 'integer', array("unsigned" => true));
 
+        $images = $schema->createTable('images');
+        $images->addColumn('id', 'integer', array("unsigned" => true, 'autoincrement' => true));
+        $images->setPrimaryKey(array("id"));
+        $images->addColumn('post_id', 'integer', array("unsigned" => true));
+        $images->addColumn('title', 'string', array("length" => 100));
+        $images->addColumn('name', 'string', array("length" => 100));
+
         $posts->addForeignKeyConstraint($users,
             array("user_id"),
             array("id"),
-            array("onDelete" => "CASCADE")
+            array("onDelete" => "CASCADE", "onUpdate" => "NO ACTION")
         );
 
         $comments->addForeignKeyConstraint($users,
             array("user_id"),
             array("id"),
-            array("onDelete" => "CASCADE")
+            array("onDelete" => "CASCADE", "onUpdate" => "NO ACTION")
+        );
+
+        $images->addForeignKeyConstraint($posts,
+            array("post_id"),
+            array("id"),
+            array("onDelete" => "NO ACTION", "onUpdate" => "NO ACTION")
         );
 
         return $schema;
