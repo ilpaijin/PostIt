@@ -5,6 +5,9 @@ namespace PostIt\Application\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation;
 
+use PostIt\Repositories\UserRepository;
+use PostIt\Aplication\Session;
+
 /**
  *
  * @package    PostIt
@@ -17,12 +20,19 @@ class LoginController extends Controller
 {
     public function loginAction(Request $request)
     {
-        if ($request->getMethod() !== 'POST') {
+        if (!$request->isXmlHttpRequest()) {
             return new HttpFoundation\Response('Method Not Allowed', 405);
         }
 
-        var_dump($request->request->all());
+        $userRepo = new UserRepository($this->container->get('db'));
 
-        return new HttpFoundation\RedirectResponse('/', 301);
+        $user = $userRepo->authenticate($request->request->get('username'), $request->request->get('password'));
+
+        if ($user) {
+            Session::setUser('loggedUser', $user);
+            return new HttpFoundation\JsonResponse(array('username' => $user['username']));
+        }
+
+        return new HttpFoundation\Response('Unauthorized', 401);
     }
 }

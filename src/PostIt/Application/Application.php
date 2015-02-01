@@ -98,8 +98,12 @@ class Application
 
             return call_user_func(array($controller,$action), $request);
         } catch (ResourceNotFoundException $e) {
+            //log error
+            // var_dump($e->getMessage());
             return call_user_func(array(new Controllers\ErrorController, 'notFound'), $request);
         } catch (Exception $e) {
+            //log error
+            // var_dump($e->getMessage());
             return call_user_func(array(new Controllers\ErrorController, 'server'), $request);
         }
     }

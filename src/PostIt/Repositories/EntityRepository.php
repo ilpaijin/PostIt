@@ -25,13 +25,23 @@ class EntityRepository
     {
         try
         {
-            $stmt = $this->dbHandler->prepare("SELECT * FROM {$this->table}");
-            $stmt->execute();
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb->select('*')->from($this->table);
+            $stmt = $qrb->execute();
 
             return $stmt->fetchAll();
+
         } catch (Exception $e)
         {
             return $e->getMessage();
         }
     }
 }
+
+
+// //$qb->add('select', 'u')
+// ->add('from', 'User u')
+// ->add('orderBy', 'u.name ASC')
+// ->setFirstResult( $offset )
+// ->setMaxResults( $limit );
