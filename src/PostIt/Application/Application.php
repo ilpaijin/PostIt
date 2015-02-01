@@ -86,7 +86,7 @@ class Application
 
         $matcher = new UrlMatcher($this->routes, $context);
 
-        // try {
+        try {
 
             $matched = $matcher->match($request->getPathInfo());
 
@@ -99,14 +99,14 @@ class Application
             $controller = new $controller($this->container);
 
             return call_user_func(array($controller,$action), $request, $matched);
-        // } catch (ResourceNotFoundException $e) {
-        //     //log error
-        //     // var_dump($e->getMessage());
-        //     return call_user_func(array(new Controllers\ErrorController, 'notFound'), $request);
-        // } catch (Exception $e) {
-        //     //log error
-        //     // var_dump($e->getMessage());
-        //     return call_user_func(array(new Controllers\ErrorController, 'server'), $request);
-        // }
+        } catch (ResourceNotFoundException $e) {
+            //log error
+            // var_dump($e->getMessage());
+            return call_user_func(array(new Controllers\ErrorController($this->container), 'notFound'), $request);
+        } catch (Exception $e) {
+            //log error
+            // var_dump($e->getMessage());
+            return call_user_func(array(new Controllers\ErrorController($this->container), 'server'), $request);
+        }
     }
 }

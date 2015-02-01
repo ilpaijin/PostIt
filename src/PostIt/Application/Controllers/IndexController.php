@@ -25,10 +25,15 @@ class IndexController extends Controller
         $limit = 1;
 
         $this->postRepository = new PostRepository($this->container->get('db'));
+        $posts_count = $this->postRepository->countAll();
+
+        if ($offset > ($posts_count['count']-1)) {
+            return $this->render('error',array('status' => '404 HTTP_NOT_FOUND'), 404);
+        }
 
         return $this->render('welcome', array(
             'posts' => $this->postRepository->findPaged($offset, $limit),
-            'posts_count' => $this->postRepository->countAll(),
+            'posts_count' => $posts_count,
             'current_page' => $offset,
             'user' => Session::get('user'),
             'img_path' => $this->container->get('config')->get('cdn_static')

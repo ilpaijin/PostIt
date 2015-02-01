@@ -60,7 +60,7 @@ class PostRepository extends EntityRepository
             ->from($this->table, 'p')
             ->leftJoin('p', 'users', 'u', 'p.user_id = u.id')
             ->leftJoin('p', 'images', 'i', 'p.id = i.post_id')
-            ->orderBy('p.date_created', 'ASC')
+            ->orderBy('p.date_created', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 

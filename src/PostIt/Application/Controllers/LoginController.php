@@ -21,7 +21,7 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
         if (!$request->isXmlHttpRequest()) {
-            return new HttpFoundation\Response('Method Not Allowed', 405);
+            $this->render('error', array('status' => '405 HTTP_METHOD_NOT_ALLOWED'), 405);
         }
 
         $userRepo = new UserRepository($this->container->get('db'));
@@ -38,6 +38,6 @@ class LoginController extends Controller
             return new HttpFoundation\JsonResponse(array('username' => $user['username']));
         }
 
-        return new HttpFoundation\Response('Unauthorized', 401);
+        return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
     }
 }

@@ -25,7 +25,7 @@ class FileController extends Controller
         }
 
         if (!Session::get('user')) {
-            return new HttpFoundation\Response('Unauthorized', 401);
+            $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
         //This should be a service

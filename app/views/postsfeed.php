@@ -4,7 +4,7 @@
         <a href="#">{{ post.title }}</a>
     </h2>
     <p class="lead">
-        by <a href="index.php">{{ post.author }}</a>
+        by <a href="#">{{ post.author }}</a>
     </p>
     <p><span class="glyphicon glyphicon-time"></span> {{ post.date_created }}</p>
     <hr>

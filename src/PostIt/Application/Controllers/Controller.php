@@ -23,8 +23,8 @@ abstract class Controller
         $this->container = $container;
     }
 
-    public function render($view, $parameters = array())
+    public function render($view, $parameters = array(), $status = 200)
     {
-        return new Response($this->container->get('twig')->render($view.'.php', $parameters));
+        return new Response($this->container->get('twig')->render($view.'.php', $parameters), $status);
     }
 }
