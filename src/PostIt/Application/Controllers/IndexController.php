@@ -5,6 +5,8 @@ namespace PostIt\Application\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use PostIt\Repositories\PostRepository;
+
 /**
  *
  * @package    PostIt
@@ -15,8 +17,12 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class IndexController extends Controller
 {
-    public function welcomeAction(Request $request)
+    public function newsFeedAction(Request $request)
     {
-        return $this->render('welcome', array('a' => 'ciao'));
+        $this->postRepository = new PostRepository($this->container->get('db'));
+
+        return $this->render('newsfeed', array(
+            'posts' => $this->postRepository->findAll()
+        ));
     }
 }

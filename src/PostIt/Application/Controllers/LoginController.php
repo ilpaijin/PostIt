@@ -18,7 +18,7 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
         if ($request->getMethod() !== 'POST') {
-            header('Location: /');
+            return new HttpFoundation\Response('Method Not Allowed', 405);
         }
 
         var_dump($request->request->all());

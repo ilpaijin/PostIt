@@ -51,7 +51,7 @@ class Schemas
         $posts->addColumn('id', 'integer', array("unsigned" => true, 'autoincrement' => true));
         $posts->setPrimaryKey(array("id"));
         $posts->addColumn('title', 'string', array("length" => 100));
-        $posts->addColumn('body', 'string');
+        $posts->addColumn('body', 'text');
         $posts->addColumn('user_id', 'integer', array("unsigned" => true));
         $posts->addColumn('date_created', 'datetime');
 
