@@ -37,7 +37,7 @@ class Application
     /**
      * @param Containerable $container
      */
-    public function __construct(Containerable $container, RouteCollection $routes)
+    public function __construct(Containerable $container, \IteratorAggregate $routes)
     {
         $this->container = $container;
         $this->routes = $routes;
