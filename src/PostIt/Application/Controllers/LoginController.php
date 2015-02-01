@@ -31,7 +31,8 @@ class LoginController extends Controller
         if ($user) {
 
             if ($request->request->get('remember-me')) {
-                Session::set('user', $user);
+                Session::set('user', $user['username']);
+                Session::set('user_id', $user['id']);
             }
 
             return new HttpFoundation\JsonResponse(array('username' => $user['username']));

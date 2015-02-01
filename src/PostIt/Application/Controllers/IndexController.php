@@ -19,11 +19,11 @@ use PostIt\Application\Config;
  */
 class IndexController extends Controller
 {
-    public function newsFeedAction(Request $request)
+    public function welcomeAction(Request $request)
     {
         $this->postRepository = new PostRepository($this->container->get('db'));
 
-        return $this->render('newsfeed', array(
+        return $this->render('welcome', array(
             'posts' => $this->postRepository->findAll(),
             'user' => Session::get('user'),
             'img_path' => $this->container->get('config')->get('cdn_static')

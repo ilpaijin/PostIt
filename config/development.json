@@ -6,5 +6,6 @@
         "host": "localhost",
         "driver": "pdo_mysql"
     },
-    "cdn_static": "http://images.postit-local/"
+    "cdn_static": "http://images.postit-local/",
+    "upload_dir": "../public/images/"
 }

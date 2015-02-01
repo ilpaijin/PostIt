@@ -1,8 +1,9 @@
 <?php
 
-use \Exception;
-
 namespace PostIt\Repositories;
+
+use \Exception;
+use \DateTime;
 
 /**
  *
@@ -42,6 +43,37 @@ class PostRepository extends EntityRepository
 
             return $stmt->fetchAll();
 
+        } catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
+
+    public function create($post, $userId)
+    {
+        try
+        {
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb
+                ->insert($this->table)
+                ->values(
+                    array(
+                        'user_id' => '?',
+                        'title' => '?',
+                        'body' => '?',
+                        'date_created' => '?'
+                    )
+                )
+                ->setParameter(0, $userId)
+                ->setParameter(1, $post['post_title'])
+                ->setParameter(2, $post['post_body'])
+                ->setParameter(3, date('Y:m:d H:i:s', time()));
+                // ->setParameter(3, new DateTime(), \Doctrine\DBAL\Types\Type::DATETIME);
+
+            $stmt = $qrb->execute();
+
+            return $this->dbHandler->lastInsertId();
         } catch (Exception $e)
         {
             throw $e;

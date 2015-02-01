@@ -15,12 +15,10 @@ Creating a blog for fun, from scratch
 * Create 'cache' folder in app/views and `sudo chmod -R 0777 app/views/cache/`
 * Tune your files in config/
 
-#### Init
+#### Console commands
 
-`
-make install
-`
-will run composer and install mysql tables
+* `make install` will run composer and install mysql tables
+* `make test` will run tests
 
 ### Engineering
 * MVC
@@ -35,8 +33,9 @@ will run composer and install mysql tables
 * Interface naming consistent with the language (PHP)
 * Error/Exception handling
 * Bootstrapping
-* Resource
+* Resource fixtures
 * Makefile
+* CDN static logic (local, no Aws S3 or similar)
 * NO output caching
 * NO query caching
 * NO log

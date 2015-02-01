@@ -31,6 +31,29 @@ class EntityRepository
     }
 
     /**
+    * Retrieve single result data
+    *
+    * @param integer $id
+    * @return mixed
+    */
+    public function findOne($id)
+    {
+        try
+        {
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb->select('*')->from($this->table)->where($qrb->expr()->eq('id', $id));
+            $stmt = $qrb->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * [findAll description]
      */
     public function findAll()
