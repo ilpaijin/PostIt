@@ -42,3 +42,4 @@ will run composer and install mysql tables
 * NO log
 * NO sanitizing/filtering
 * NO event handling
+* NO CSRF token

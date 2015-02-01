@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation;
 
 use PostIt\Repositories\UserRepository;
-use PostIt\Aplication\Session;
+use PostIt\Application\Session;
 
 /**
  *
@@ -29,7 +29,11 @@ class LoginController extends Controller
         $user = $userRepo->authenticate($request->request->get('username'), $request->request->get('password'));
 
         if ($user) {
-            Session::setUser('loggedUser', $user);
+
+            if ($request->request->get('remember-me')) {
+                Session::set('user', $user);
+            }
+
             return new HttpFoundation\JsonResponse(array('username' => $user['username']));
         }
 

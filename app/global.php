@@ -15,4 +15,5 @@ if ('cli' !== php_sapi_name()) {
 
 ErrorHandler::register();
 
+session_name('postit');
 session_start();

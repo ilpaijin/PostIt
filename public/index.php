@@ -10,7 +10,4 @@ $request = Request::createFromGlobals();
 
 $response = $app->handle($request);
 
-var_dump(session_id());
-exit;
-
 $response->send();
