@@ -19,12 +19,17 @@ use PostIt\Application\Config;
  */
 class IndexController extends Controller
 {
-    public function welcomeAction(Request $request)
+    public function welcomeAction(Request $request, $page)
     {
+        $offset = $page ? $page['page'] : 0;
+        $limit = 1;
+
         $this->postRepository = new PostRepository($this->container->get('db'));
 
         return $this->render('welcome', array(
-            'posts' => $this->postRepository->findAll(),
+            'posts' => $this->postRepository->findPaged($offset, $limit),
+            'posts_count' => $this->postRepository->countAll(),
+            'current_page' => $offset,
             'user' => Session::get('user'),
             'img_path' => $this->container->get('config')->get('cdn_static')
         ));

@@ -40,7 +40,7 @@ class PostController extends Controller
 
             $imageRepo->update($request->request->get('post_image_preview'), $postId);
 
-            return new HttpFoundation\RedirectResponse('/', 302);
+            return new HttpFoundation\JsonResponse(array('response'=>true));
         }
 
 

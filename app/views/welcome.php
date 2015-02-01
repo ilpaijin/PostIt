@@ -38,10 +38,18 @@
                     <!-- Pager -->
                     <ul class="pager">
                         <li class="previous">
-                            <a href="#">← Older</a>
+                            {% if current_page != 0  %}
+                                <a href="/p/{{current_page-1}}">←  Older</a>
+                            {% else %}
+                                <span>←  Older</span>
+                            {% endif %}
                         </li>
                         <li class="next">
-                            <a href="#">Newer →</a>
+                            {% if current_page < (posts_count.count-1) %}
+                                <a href="/p/{{current_page+1}}">Newer →</a>
+                            {% else %}
+                                <span>Newer →</span>
+                            {% endif %}
                         </li>
                     </ul>
 
@@ -115,8 +123,9 @@
                     data: $(this).serialize(),
                     success: function(data) {
                         console.info(data);
-                        // loginForm.parents('#login-form').hide();
-                        // $('#login-account').append(data.username).fadeIn();
+                        if (data.response) {
+                            location.reload();
+                        }
                     },
                     error: function(xhr, reason, status) {
                         console.info(xhr);

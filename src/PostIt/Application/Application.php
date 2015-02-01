@@ -92,11 +92,13 @@ class Application
 
             $request->attributes->add($matched, EXTR_SKIP);
 
-            list($controller, $action) = $matched['_controller'];
+            list($controller, $action) = array_shift($matched);
+
+            unset($matched['_route']);
 
             $controller = new $controller($this->container);
 
-            return call_user_func(array($controller,$action), $request);
+            return call_user_func(array($controller,$action), $request, $matched);
         // } catch (ResourceNotFoundException $e) {
         //     //log error
         //     // var_dump($e->getMessage());

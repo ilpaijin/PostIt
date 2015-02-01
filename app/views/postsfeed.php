@@ -1,5 +1,6 @@
 {% for post in posts %}
     <h2>
+        #{{ post.id }}
         <a href="#">{{ post.title }}</a>
     </h2>
     <p class="lead">

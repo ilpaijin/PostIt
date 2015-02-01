@@ -49,6 +49,55 @@ class PostRepository extends EntityRepository
         }
     }
 
+    public function findPaged($offset, $limit)
+    {
+        try
+        {
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb
+            ->select('p.*', 'u.username as author', 'i.title as image_title', 'i.name as image_name')
+            ->from($this->table, 'p')
+            ->leftJoin('p', 'users', 'u', 'p.user_id = u.id')
+            ->leftJoin('p', 'images', 'i', 'p.id = i.post_id')
+            ->orderBy('p.date_created', 'ASC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
+            // echo $qrb->getSQL();
+
+            $stmt = $qrb->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
+
+    public function countAll()
+    {
+        try
+        {
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb
+            ->select('COUNT(p.id) as count')
+            ->from($this->table, 'p')
+            ->leftJoin('p', 'users', 'u', 'p.user_id = u.id')
+            ->leftJoin('p', 'images', 'i', 'p.id = i.post_id');
+
+            $stmt = $qrb->execute();
+
+            return $stmt->fetch();
+
+        } catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
+
     public function create($post, $userId)
     {
         try

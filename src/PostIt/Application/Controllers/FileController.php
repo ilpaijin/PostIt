@@ -36,7 +36,7 @@ class FileController extends Controller
             return new HttpFoundation\JsonResponse($id);
         }
 
-        return new HttpFoundation\JsonResponse(array('error' => 'some msg'));
+        return new HttpFoundation\JsonResponse(array('response' => 'error'));
     }
 
     public function uploadImage($image)

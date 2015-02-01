@@ -83,10 +83,12 @@ class ImageRepository extends EntityRepository
 
             $qrb
                 ->update($this->table, 'i')
+                ->set('i.status', '?')
                 ->set('i.post_id', '?')
                 ->where('id = ?')
-                ->setParameter(0, $data)
-                ->setParameter(1, $targetId);
+                ->setParameter(0, 'active')
+                ->setParameter(1, $data)
+                ->setParameter(2, $targetId);
 
             $stmt = $qrb->execute();
 
