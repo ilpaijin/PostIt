@@ -42,3 +42,6 @@ Creating a blog for fun, from scratch
 * NO sanitizing/filtering
 * NO event handling
 * NO CSRF token
+
+### Thoughts
+The images folder should be purged with a process, to remove the unused.  
