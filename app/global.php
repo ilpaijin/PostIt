@@ -14,3 +14,5 @@ if ('cli' !== php_sapi_name()) {
 }
 
 ErrorHandler::register();
+
+session_start();
