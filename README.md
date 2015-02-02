@@ -14,7 +14,8 @@ admin/admin
 ### Requirements
 * Create a vhost (see resource folder for example)
 * Create a db "postit"
-* Create 'cache' folder in app/views and `sudo chmod -R 0777 app/views/cache/`
+* Create 'cache' folder in app/views
+* `sudo chmod -R 0777 app/views/cache/` and `sudo chmod -R 0777 public/images/` (It's a demo!)
 * Tune your files in config/
 
 ### Console commands
