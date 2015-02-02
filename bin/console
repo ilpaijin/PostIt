@@ -25,4 +25,11 @@ $console
         Commands\Schemas::create($app->containerGet('db'));
     });
 
+$console
+    ->register('admin')
+    ->setDescription('Create Admin User')
+    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+        Commands\AdminUser::create($app->containerGet('db'));
+    });
+
 $console->run();
