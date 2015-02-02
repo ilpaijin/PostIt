@@ -59,11 +59,13 @@ class ImageRepository extends EntityRepository
                 ->values(
                     array(
                         'name' => '?',
-                        'title' => '?'
+                        'title' => '?',
+                        'status' => '?'
                     )
                 )
                 ->setParameter(0, $image['newName'])
-                ->setParameter(1, $image['name']);
+                ->setParameter(1, $image['name'])
+                ->setParameter(2, 'unused');
 
             $stmt = $qrb->execute();
 

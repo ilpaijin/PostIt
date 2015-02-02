@@ -60,6 +60,7 @@ class FileController extends Controller
         try {
             return $imageRepo->save($image);
         } catch (Exception $e) {
+            //Log here
             return false;
         }
     }

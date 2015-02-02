@@ -66,7 +66,7 @@ class Schemas
         $images = $schema->createTable('images');
         $images->addColumn('id', 'integer', array("unsigned" => true, 'autoincrement' => true));
         $images->setPrimaryKey(array("id"));
-        $images->addColumn('post_id', 'integer', array("unsigned" => true));
+        $images->addColumn('post_id', 'integer', array("unsigned" => true, 'notnull' => false));
         $images->addColumn('title', 'string', array("length" => 100));
         $images->addColumn('name', 'string', array("length" => 100));
         $images->addColumn('status', 'enum');
