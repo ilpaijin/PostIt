@@ -22,6 +22,8 @@ class Schemas
      */
     public static function create(Connection $conn)
     {
+        \Doctrine\DBAL\Types\Type::addType('enum', 'PostIt\Application\Commands\Types\Enum');
+
         $sm = $conn->getSchemaManager();
 
         $schema = static::getBlogSchemas();
@@ -67,6 +69,7 @@ class Schemas
         $images->addColumn('post_id', 'integer', array("unsigned" => true));
         $images->addColumn('title', 'string', array("length" => 100));
         $images->addColumn('name', 'string', array("length" => 100));
+        $images->addColumn('status', 'enum');
 
         $posts->addForeignKeyConstraint($users,
             array("user_id"),
