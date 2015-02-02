@@ -21,13 +21,14 @@ class IndexController extends Controller
 {
     public function welcomeAction(Request $request, $page)
     {
+        //pagination logic, to be moved away
         $offset = $page ? $page['page'] : 0;
         $limit = 1;
 
         $this->postRepository = new PostRepository($this->container->get('db'));
         $posts_count = $this->postRepository->countAll();
 
-        if ($offset > ($posts_count['count']-1)) {
+        if ($offset && $offset > ($posts_count['count']-1)) {
             return $this->render('error',array('status' => '404 HTTP_NOT_FOUND'), 404);
         }
 
