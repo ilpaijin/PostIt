@@ -32,7 +32,7 @@ class IndexController extends Controller
             return $this->render('error',array('status' => '404 HTTP_NOT_FOUND'), 404);
         }
 
-        return $this->render('welcome', array(
+        return $this->render('front/welcome', array(
             'posts' => $this->postRepository->findPaged($offset, $limit),
             'posts_count' => $posts_count,
             'current_page' => $offset,

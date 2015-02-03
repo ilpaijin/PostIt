@@ -22,11 +22,11 @@ class PostController extends Controller
     public function createPostAction(Request $request)
     {
         if (!$request->isXmlHttpRequest()) {
-            $this->render('error', array('status' => '405 HTTP_METHOD_NOT_ALLOWED'), 405);
+            return $this->render('error', array('status' => '405 HTTP_METHOD_NOT_ALLOWED'), 405);
         }
 
         if (!Session::get('user')) {
-            $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
+            return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
         $postRepo = new PostRepository($this->container->get('db'));

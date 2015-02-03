@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>PostIt - What's the post you've liked the most?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/posts.css">
 </head>
 <body>
-    {% include 'sections/nav.php' ignore missing %}
+    {% include 'front/sections/nav.php' ignore missing %}
 
     <div class="jumbotron">
         <div class="container">
@@ -30,14 +31,14 @@
                     <small>deserve a good Answer!</small>
                 </h1>
 
-                {% include 'sections/postsfeed.php' ignore missing %}
+                {% include 'front/sections/postsfeed.php' ignore missing %}
 
             </div>
 
             <!-- Sidebar -->
             <div class="col-md-4">
 
-                {% include 'sections/sidebar.php' ignore missing %}
+                {% include 'front/sections/sidebar.php' ignore missing %}
 
             </div>
 
@@ -57,6 +58,7 @@
 
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="{{static_cdn}}js/lib.js"></script>
+    <script src="{{static_cdn}}js/login.js"></script>
+    <script src="{{static_cdn}}js/posts.js"></script>
 </body>
 </html>

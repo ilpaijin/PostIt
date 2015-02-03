@@ -3,7 +3,7 @@
 
         <div id="login">
 
-            {% include 'sections/login.php' ignore missing %}
+            {% include 'front/sections/login.php' %}
 
         </div>
 

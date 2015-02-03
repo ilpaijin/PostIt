@@ -13,24 +13,36 @@ $routes->add('/', new Route('/', array(
     // array(), array(), '', array(), array('GET')
 )));
 
-$routes->add('/p', new Route('/p/{page}', array(
+$routes->add('p', new Route('/p/{page}', array(
     '_controller' => array('PostIt\Application\Controllers\IndexController', 'welcomeAction'),
     // array(), array(), '', array(), array('GET')
 )));
 
-$routes->add('/login', new Route('login', array(
+$routes->add('login', new Route('/login', array(
     '_controller' => array('PostIt\Application\Controllers\LoginController', 'loginAction'),
     // array(), array(), '', array(), array('POST')
 )));
 
-$routes->add('/posts', new Route('posts', array(
+$routes->add('posts', new Route('/posts', array(
     '_controller' => array('PostIt\Application\Controllers\PostController', 'createPostAction'),
     // array(), array(), '', array(), array('POST')
 )));
 
-$routes->add('/files', new Route('files', array(
+$routes->add('files', new Route('/files', array(
     '_controller' => array('PostIt\Application\Controllers\FileController', 'createImageAction'),
     // array(), array(), '', array(), array('POST')
+)));
+
+$routes->add('admin_section', new Route('/admin/{page}', array(
+    '_controller' => array('PostIt\Application\Controllers\AdminController', 'sectionAction')
+    // array(), array(), '', array(), array('GET')
+), array(
+    'page' => '\w+',
+)));
+
+$routes->add('admin', new Route('/admin', array(
+    '_controller' => array('PostIt\Application\Controllers\AdminController', 'welcomeAction')
+    // array(), array(), '', array(), array('GET')
 )));
 
 return $routes;
