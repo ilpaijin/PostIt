@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/posts.css">
     <link rel="stylesheet" href="/css/posts.css">
     <link rel="stylesheet" href="/css/datepicker.css">
+    <link rel="stylesheet" href="/css/welcome.css">
 </head>
 <body>
     {% include 'front/sections/nav.php' ignore missing %}
@@ -35,7 +36,7 @@
             </p>
         </div>
     </div>
-    <div class="container">
+    <div id="welcome" class="container">
 
         <div class="row">
 
@@ -76,6 +77,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/posts.js"></script>
-    <script src="/js/bootstrap-datepicker.js"></script>>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/js/welcome.js"></script>
 </body>
 </html>

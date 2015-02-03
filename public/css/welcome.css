@@ -1,0 +1,21 @@
+#welcome #create-posts {
+    position: fixed;
+    right: 0;
+    top: 50px;
+    width: 400px;
+    opacity: 0.9;
+}
+
+#welcome #create-posts {
+    background: #337ab7;
+    box-shadow: 0 0 11px 4px #aaa;
+    border: 1px solid #337ab7;
+}
+
+#welcome #create-posts a {
+    color:#eee;
+}
+
+#welcome .create-posts-wall button {
+    background: #000;
+}

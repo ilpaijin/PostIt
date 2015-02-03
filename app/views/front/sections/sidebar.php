@@ -1,5 +1,15 @@
 {% if user %}
-    {% include 'back/pages/posts.php' %}
+
+    <div id="create-posts" class="well">
+        <a href="#" class="toggle-side-widget open">
+            <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span>
+        </a>
+        <div class="side-widget">
+            <h3>Quick widget post!</h3>
+            {% include 'generic/sections/posts.php' %}
+        </div>
+    </div>
+
 {% endif %}
 <div class="well">
     <h3>Mr. Postman</h3>
