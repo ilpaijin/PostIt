@@ -33,7 +33,8 @@ class AdminController extends Controller
     {
         return $this->render('back/admin', array(
             'user' => Session::get('user'),
-            'page' => end($page)
+            'page' => end($page),
+            'img_path' => $this->container->get('config')->get('cdn_static')
         ));
     }
 
