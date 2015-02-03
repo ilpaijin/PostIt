@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Route;
 
 $routes = new RouteCollection();
 
-$routes->add('/', new Route('/', array(
+$routes->add('home', new Route('/', array(
     '_controller' => array('PostIt\Application\Controllers\IndexController', 'welcomeAction'),
     // array(), array(), '', array(), array('GET')
 )));
@@ -20,6 +20,11 @@ $routes->add('p', new Route('/p/{page}', array(
 
 $routes->add('login', new Route('/login', array(
     '_controller' => array('PostIt\Application\Controllers\LoginController', 'loginAction'),
+    // array(), array(), '', array(), array('POST')
+)));
+
+$routes->add('logout', new Route('/logout', array(
+    '_controller' => array('PostIt\Application\Controllers\LoginController', 'logoutAction'),
     // array(), array(), '', array(), array('POST')
 )));
 

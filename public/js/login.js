@@ -18,6 +18,8 @@ $(document).ready( function() {
             success: function(data) {
                 loginForm.parents('#login-form').hide();
                 $('#login-account').append(data.username).fadeIn();
+
+                location.reload();
             },
             error: function(xhr, reason, status) {
                 loginForm.siblings('.response').html(status);

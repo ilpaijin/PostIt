@@ -40,4 +40,12 @@ class LoginController extends Controller
 
         return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
     }
+
+    public function logoutAction(Request $request)
+    {
+        session_destroy();
+
+        header("Location: /", 301);
+        exit(0);
+    }
 }

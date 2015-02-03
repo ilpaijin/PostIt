@@ -3,6 +3,7 @@
     alt="">
     {% if user %}
         <span> {{ user }} </span>
+        <a href="/logout" rel="nofollow">logout</a>
     {% else %}
         <a class="toggle-form" href="#" rel="nofollow">Login</a>
     {% endif %}
