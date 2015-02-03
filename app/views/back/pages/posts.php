@@ -12,6 +12,15 @@
             <div id="preview_post_image">
                 <img class="img" src="#" alt="preview post image">
             </div>
+            <div class="form-group input-append date" id="dp3" data-date-format="yyyy-mm-dd HH:mm:ii">
+                Published on
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </div>
+                    <input name="post_published" class="span2 form-control" size="16" type="text" value="{{ now|date('Y/m/d') }}">
+                </div>
+            </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
         </form>
     </div>

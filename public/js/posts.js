@@ -4,6 +4,8 @@
 
 $(document).ready( function() {
 
+    $('.datepicker').datepicker()
+
     var postsForm = $('.form-create-posts');
 
     postsForm.submit(function(event) {
