@@ -56,6 +56,7 @@ class Schemas
         $posts->addColumn('body', 'text');
         $posts->addColumn('user_id', 'integer', array("unsigned" => true));
         $posts->addColumn('date_created', 'datetime');
+        $posts->addColumn('published', 'datetime');
 
         $comments = $schema->createTable('comments');
         $comments->addColumn('id', 'integer', array("unsigned" => true, 'autoincrement' => true));
