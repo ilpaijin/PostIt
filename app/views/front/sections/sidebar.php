@@ -1,8 +1,8 @@
 {% if user %}
 
     <div id="create-posts" class="well">
-        <a href="#" class="toggle-side-widget open">
-            <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span>
+        <a href="#" class="toggle-side-widget">
+            <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
         </a>
         <div class="side-widget">
             <h3>Quick widget post!</h3>

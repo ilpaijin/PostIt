@@ -1,6 +1,6 @@
 #welcome #create-posts {
     position: fixed;
-    right: 0;
+    right: -330px;
     top: 50px;
     width: 400px;
     opacity: 0.9;
@@ -19,3 +19,5 @@
 #welcome .create-posts-wall button {
     background: #000;
 }
+
+#welcome .side-widget { display:none; }
