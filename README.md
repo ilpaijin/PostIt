@@ -1,7 +1,8 @@
 # PostIt!
 
 Creating a blog for fun, from scratch
-### Login
+
+### Login postit-local/admin or postit-local
 admin/admin
 
 ### Stack
