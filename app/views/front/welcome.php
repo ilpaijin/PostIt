@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/datepicker.css">
 </head>
 <body>
     {% include 'front/sections/nav.php' ignore missing %}
@@ -74,5 +76,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/posts.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>>
 </body>
 </html>
