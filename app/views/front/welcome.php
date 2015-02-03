@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content='Good questions and Answers' name='description'/>
+    <meta content='Questions,Answers,Solutions,Improvements,talk,discussions' name='keywords'/>
+    <meta content='Ilpaijin' name='Author'/>
+    <meta content='ilpaijin@gmail.com' name='Email'/>
+    <meta content='all' name='robots'/>
+    <meta content='index, follow' name='robots'/>
+    <meta content='english' name='language'/>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="postis-local">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="images.postis-local/answers.png">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="PostIt">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Q&amp;A for everyone, about everything">
+    <meta property="og:url" content="http://stackoverflow.com/">
     <title>PostIt - What's the post you've liked the most?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/login.css">
