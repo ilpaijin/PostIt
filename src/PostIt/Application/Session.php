@@ -33,4 +33,13 @@ class Session
     {
         return isset($_SESSION[$key]) ? $_SESSION[$key] : false ;
     }
+
+    /**
+     * Destroya session
+     * @return void
+     */
+    public function end()
+    {
+        session_destroy();
+    }
 }

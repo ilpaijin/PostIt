@@ -43,7 +43,8 @@ class LoginController extends Controller
 
     public function logoutAction(Request $request)
     {
-        session_destroy();
+        //this should be a logout service
+        Session::end();
 
         header("Location: /", 301);
         exit(0);
