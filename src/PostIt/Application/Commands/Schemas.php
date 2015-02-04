@@ -29,7 +29,9 @@ class Schemas
         $schema = static::getBlogSchemas();
 
         foreach ($schema->getTables() as $table) {
-            $sm->createTable($table);
+            if ($sm->tablesExist(array($table->getName())) !== true) {
+                $sm->createTable($table);
+            }
         }
     }
 

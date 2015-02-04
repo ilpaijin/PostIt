@@ -25,15 +25,24 @@ class AdminUser
         $qrb = $conn->createQueryBuilder();
 
         $qrb
-            ->insert('users')
-            ->values( array(
-                'username' => '?',
-                'password' => '?',
-            ))
-            ->setParameter(0, 'admin')
-            ->setParameter(1, hash('sha256', 'admin'));
-
+            ->select('*')
+            ->from('users', 'u')
+            ->where('username =' . $qrb->createNamedParameter('admin'))
+            ->andWhere('password =' . $qrb->createNamedParameter(hash('sha256', 'admin')));
 
         $stmt = $qrb->execute();
+
+        if(!$stmt->fetch()) {
+            $qrb
+                ->insert('users')
+                ->values( array(
+                    'username' => '?',
+                    'password' => '?',
+                ))
+                ->setParameter(0, 'admin')
+                ->setParameter(1, hash('sha256', 'admin'));
+
+            $stmt = $qrb->execute();
+        }
     }
 }
