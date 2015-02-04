@@ -49,6 +49,10 @@ $(document).ready( function() {
                 success: function(data) {
                     $('#post_image_preview').remove();
                     postsForm.append('<input type="hidden" id="post_image_preview" name="post_image_preview" value="'+data+'">');
+
+                    if($("#welcome").length != 0) {
+                        $('#post_image').css({ display: 'none' });
+                    }
                 },
                 error: function(xhr, reason, status) {
                     console.info(xhr);

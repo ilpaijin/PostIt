@@ -12,6 +12,8 @@
     border: 1px solid #337ab7;
 }
 
+#welcome #create-posts .post-image { display:none; }
+
 #welcome #create-posts a {
     color:#eee;
 }
@@ -21,3 +23,4 @@
 }
 
 #welcome .side-widget { display:none; }
+#welcome .side-widget h3{ float: right; margin: 0; }

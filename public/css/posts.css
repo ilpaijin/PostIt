@@ -7,8 +7,8 @@
 
 #preview_post_image { display:none; margin: 10px; text-align:center; }
 #preview_post_image img {
-    -moz-border-radius: 20%;
-    -webkit-border-radius: 20%;
-    border-radius: 20%;
+    -moz-border-radius: 10%;
+    -webkit-border-radius: 10%;
+    border-radius: 10%;
     width: 240px;
 }
