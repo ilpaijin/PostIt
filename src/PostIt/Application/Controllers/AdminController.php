@@ -21,8 +21,10 @@ class AdminController extends Controller
 {
     public function welcomeAction(Request $request)
     {
-        // $this->postRepository = new PostRepository($this->container->get('db'));
-        // $posts = $this->postRepository->findAll();
+        if (!Session::get('user')) {
+            header("Location: /", 302);
+            exit(0);
+        }
 
         return $this->render('back/admin', array(
             'user' => Session::get('user')
@@ -34,7 +36,7 @@ class AdminController extends Controller
         if (!Session::get('user')) {
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
-        
+
         $this->postRepository = new PostRepository($this->container->get('db'));
         $posts = $this->postRepository->findAll();
 
