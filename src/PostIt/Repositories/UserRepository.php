@@ -20,6 +20,31 @@ class UserRepository extends EntityRepository
     public $table = 'users';
 
     /**
+    * Retrieve all users
+    *
+    * @return mixed
+    */
+    public function findAll()
+    {
+        try
+        {
+            $qrb = $this->dbHandler->createQueryBuilder();
+
+            $qrb
+            ->select('u.*')
+            ->from($this->table, 'u');
+
+            $stmt = $qrb->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
+
+    /**
      * To be moved from here
      *
      * @param  string $username

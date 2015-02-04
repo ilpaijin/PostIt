@@ -24,10 +24,10 @@
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li {% if page == 'posts' %} class="active" {% endif %}>
-                        <a href="/admin/posts">Posts</a>
+                        <a href="/admin/posts">Posts <span class="badge">{{posts|length}}</span></a>
                     </li>
                     <li {% if page == 'users' %} class="active" {% endif %}>
-                        <a href="/admin/users">Users</a>
+                        <a href="/admin/users">Users <span class="badge">{{users|length}}</span></a>
                     </li>
                 </ul>
             </div>

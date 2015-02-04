@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use PostIt\Repositories\PostRepository;
+use PostIt\Repositories\UserRepository;
 use PostIt\Application\Session;
 use PostIt\Application\Config;
 
@@ -40,8 +41,12 @@ class AdminController extends Controller
         $this->postRepository = new PostRepository($this->container->get('db'));
         $posts = $this->postRepository->findAll();
 
+        $this->userRepository = new UserRepository($this->container->get('db'));
+        $users = $this->userRepository->findAll();
+
         return $this->render('back/admin', array(
             'posts' => $posts,
+            'users' => $users,
             'user' => Session::get('user'),
             'page' => end($page),
             'img_path' => $this->container->get('config')->get('cdn_static')
