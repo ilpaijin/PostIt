@@ -22,5 +22,6 @@
     background: #000;
 }
 
+#welcome .side-widget { color:#ccc; }
 #welcome .side-widget { display:none; }
 #welcome .side-widget h3{ float: right; margin: 0; }
