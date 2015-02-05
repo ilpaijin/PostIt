@@ -27,6 +27,8 @@ $app->containerSet('config', new Config(__DIR__."/../config/".$env.".json"));
 |--------------------------------------------------------------------------
 |
 */
+// var_dump($app->containerGet('config'));
+// exit;
 $db = \Doctrine\DBAL\DriverManager::getConnection(
     $app->containerGet('config')->get('db'),
     new \Doctrine\DBAL\Configuration()
