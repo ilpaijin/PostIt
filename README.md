@@ -1,5 +1,7 @@
 # PostIt!
 
+[![Build Status](https://travis-ci.org/ilpaijin/PostIt.svg?branch=master)](https://travis-ci.org/ilpaijin/PostIt)
+
 Creating a blog for fun, from scratch
 
 ### Login postit-local/admin or postit-local
