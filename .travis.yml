@@ -1,8 +1,11 @@
 language: php
 
 php:
-  - "5.4.0"
+  - 5.4
 
-composer install
+install:
+  - composer self-update
+  - composer install
 
-phpunit
+script:
+  - phpunit

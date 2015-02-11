@@ -8,7 +8,7 @@ Creating a blog for fun, from scratch
 admin/admin
 
 ### Stack
-* Php 5.5
+* Php 5.4
 * MySql
 * Composer
 * Git
