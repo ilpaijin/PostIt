@@ -33,12 +33,14 @@ class LoginController extends Controller
             if ($request->request->get('remember-me')) {
                 Session::set('user', $user['username']);
                 Session::set('user_id', $user['id']);
+
+                setcookie('pitpit', hash('sha256', $_SERVER['HTTP_USER_AGENT']), (time()*60), '/', '', false, true);
             }
 
             return new HttpFoundation\JsonResponse(array('username' => $user['username']));
         }
 
-        return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
+        return HttpFoundation\JsonResponse(array('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401));
     }
 
     public function logoutAction(Request $request)

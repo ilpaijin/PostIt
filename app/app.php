@@ -6,8 +6,12 @@ require_once __DIR__.'/../vendor/twig/twig/lib/Twig/Autoloader.php';
 use PostIt\Application\Container;
 use PostIt\Application\Environment;
 use PostIt\Application\Config;
+use PostIt\Application\Session;
+use PostIt\Entities\User;
 
 date_default_timezone_set('Europe/Amsterdam');
+
+Session::start();
 
 $routes = require __DIR__.'/routes.php';
 
@@ -27,8 +31,6 @@ $app->containerSet('config', new Config(__DIR__."/../config/".$env.".json"));
 |--------------------------------------------------------------------------
 |
 */
-// var_dump($app->containerGet('config'));
-// exit;
 $db = \Doctrine\DBAL\DriverManager::getConnection(
     $app->containerGet('config')->get('db'),
     new \Doctrine\DBAL\Configuration()
@@ -48,5 +50,13 @@ $twig = new Twig_Environment($loader, array(
     'debug' => $app->containerGet('env')
 ));
 $app->containerSet('twig', $twig);
+
+/*
+|--------------------------------------------------------------------------
+| USer Service
+|--------------------------------------------------------------------------
+|
+*/
+$app->containerSet('user', new User());
 
 return $app;

@@ -1,6 +1,6 @@
 <?php
 
-namespace PostIt\Entities\User;
+namespace PostIt\Entities;
 
 /**
  *
@@ -14,7 +14,7 @@ class User
 {
     protected $id;
     protected $username;
-    protected $password
+    protected $password;
 
     /**
      * Get the value of Id
