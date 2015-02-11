@@ -3,6 +3,6 @@ language: php
 php:
   - "5.4.0"
 
-composer install
+install: composer install --dev
 
-phpunit
+script: phpunit
