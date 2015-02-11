@@ -8,7 +8,7 @@ namespace PostIt\Repositories;
 *
 * @package    PostIt
 * @author     Paolo Pietropoli (ilpaijin) <paolo.pietropoli@yieldr.com>
-* @copyright  Ilpaijin
+* @copyright  2015 Ilpaijin
 * @license
 * @version    Release: @package_version@
 */

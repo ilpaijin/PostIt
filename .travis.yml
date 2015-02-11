@@ -9,3 +9,4 @@ install:
 
 script:
   - phpunit
+  # - php vendor/bin/phpcs
