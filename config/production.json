@@ -4,7 +4,7 @@
         "user": "trwcossiceqnfj",
         "password": "O8Px27MtFubITwKanoZPeYDme2",
         "host": "ec2-23-21-235-249.compute-1.amazonaws.com",
-        "driver": "pdo_mysql"
+        "driver": "pdo_pgsql"
     },
     "cdn_static": "http://images.postit-local/",
     "upload_dir": "../public/images/"
