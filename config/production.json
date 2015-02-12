@@ -1,9 +1,9 @@
 {
     "db": {
-        "dbname": "postit_prod",
-        "user": "root",
-        "password": "abcde",
-        "host": "localhost",
+        "dbname": "d8lea8ti7iamqt",
+        "user": "trwcossiceqnfj",
+        "password": "O8Px27MtFubITwKanoZPeYDme2",
+        "host": "ec2-23-21-235-249.compute-1.amazonaws.com",
         "driver": "pdo_mysql"
     },
     "cdn_static": "http://images.postit-local/",
