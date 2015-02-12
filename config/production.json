@@ -3,7 +3,7 @@
         "dbname": "dc348nuslo9f1k",
         "user": "uuixjolmzttgrc",
         "password": "NOt5qU3nlXnFllJatKtHH6YVLC",
-        "host": "localhost",
+        "host": "ec2-54-235-146-58.compute-1.amazonaws.com",
         "driver": "pdo_pgsql",
         "port": "5432"
     },
