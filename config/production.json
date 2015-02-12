@@ -1,9 +1,9 @@
 {
     "db": {
-        "dbname": "d8lea8ti7iamqt",
-        "user": "trwcossiceqnfj",
-        "password": "O8Px27MtFubITwKanoZPeYDme2",
-        "host": "ec2-23-21-235-249.compute-1.amazonaws.com",
+        "dbname": "dc348nuslo9f1k",
+        "user": "uuixjolmzttgrc",
+        "password": "NOt5qU3nlXnFllJatKtHH6YVLC",
+        "host": "ec2-54-235-146-58.compute-1.amazonaws.com:5432",
         "driver": "pdo_pgsql"
     },
     "cdn_static": "http://images.postit-local/",
