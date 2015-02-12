@@ -3,8 +3,9 @@
         "dbname": "dc348nuslo9f1k",
         "user": "uuixjolmzttgrc",
         "password": "NOt5qU3nlXnFllJatKtHH6YVLC",
-        "host": "ec2-54-235-146-58.compute-1.amazonaws.com:5432",
-        "driver": "pdo_pgsql"
+        "host": "ec2-54-235-146-58.compute-1.amazonaws.com",
+        "driver": "pdo_pgsql",
+        "port": "5432"
     },
     "cdn_static": "http://images.postit-local/",
     "upload_dir": "../public/images/"
