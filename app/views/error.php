@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>PostIt - What's the post you've liked the most?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
