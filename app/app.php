@@ -23,7 +23,7 @@ $env = Environment::detect();
 
 $app->containerSet('env', $env);
 $app->containerSet('template_path', __DIR__.'/views');
-$app->containerSet('config', new Config(__DIR__."/../config/".$env.".json"));
+$app->containerSet('config', new Config(__DIR__."/config/".$env.".json"));
 
 /*
 |--------------------------------------------------------------------------
