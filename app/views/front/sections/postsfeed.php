@@ -9,7 +9,8 @@
         </p>
         <p><span class="glyphicon glyphicon-time"></span> {{ post.date_created }}</p>
         <hr>
-        <img class="img-responsive" src="{{ img_path }}{{ post.image_name }}" alt="{{ post.image_name}}" title="{{post.image_title}}">
+            <img class="img-responsive" src="{{ img_path }}{{ post.image_name | default('no-image') }}" alt="{{ post.image_name | default('no-image') }}" title="{{ post.image_name | default('no-image') }}">
+
         <hr>
         <p>{{  post.body }}</p>
         <div class="well">
