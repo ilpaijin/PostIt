@@ -100,10 +100,10 @@ class Application
 
         } catch (ResourceNotFoundException $e) {
             //log error
-            return call_user_func(array(new Controllers\ErrorController($this->container), 'notFound'), $request);
+            return call_user_func(array(new Controllers\ErrorController($this->container), 'notFound'), $request, $e->getMessage());
         } catch (Exception $e) {
             //log error
-            return call_user_func(array(new Controllers\ErrorController($this->container), 'server'), $request);
+            return call_user_func(array(new Controllers\ErrorController($this->container), 'server'), $request, $e->getMessage());
         }
     }
 

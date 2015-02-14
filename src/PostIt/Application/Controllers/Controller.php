@@ -18,10 +18,19 @@ abstract class Controller
 {
     /**
      * Service Container
-     * 
+     *
      * @var PostIt\Application\Contracts\Containerable
      */
     protected $container;
+
+    /**
+     * Dependencies
+     *
+     * @var array
+     */
+    protected $dependencies = array(
+        'paginator' => 'PostIt\\Application\\Paginator'
+    );
 
     /**
      * [__construct description]
@@ -44,5 +53,29 @@ abstract class Controller
     public function render($view, $parameters = array(), $status = 200)
     {
         return new Response($this->container->get('twig')->render($view.'.php', $parameters), $status);
+    }
+
+    /**
+     * Dependencies getter
+     *
+     * @return array
+     */
+    public function __call($method, $attr)
+    {
+        $prefix = substr($method, 0, 3);
+        $deps = strtolower(substr($method, 3));
+
+        if ($prefix === 'get') {
+
+            if (!isset($this->dependencies[$deps])) {
+                return false;
+            }
+
+            if (!$this->container->getService($deps)) {
+                $this->container->setService($deps, new $this->dependencies[$deps]);
+            }
+
+            return $this->container->getService($deps);
+        }
     }
 }

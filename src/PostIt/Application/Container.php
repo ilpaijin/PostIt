@@ -55,7 +55,7 @@ class Container implements Containerable
             return $this->getValue($name);
         }
 
-        throw new InvalidArgumentException("The container doesn't have the requested value: {$name}");
+        throw new InvalidArgumentException("The container doesn't have the requested value/service: {$name}");
     }
 
     /**
@@ -64,7 +64,7 @@ class Container implements Containerable
      * @param string $serviceName
      * @param object $service
      */
-    protected function setService($serviceName, $service)
+    public function setService($serviceName, $service)
     {
         $this->services[$serviceName] = $service;
     }
@@ -75,7 +75,7 @@ class Container implements Containerable
      * @param string $serviceName
      * @return object|bool
      */
-    protected function getService($serviceName)
+    public function getService($serviceName)
     {
         return isset($this->services[$serviceName]) ? $this->services[$serviceName] : false;
     }
@@ -86,7 +86,7 @@ class Container implements Containerable
     * @param string $name
     * @param string $value
     */
-    protected function setValue($name, $value)
+    public function setValue($name, $value)
     {
         $this->values[$name] = $value;
     }
@@ -97,7 +97,7 @@ class Container implements Containerable
     * @param string $serviceName
     * @return object|bool
     */
-    protected function getValue($name)
+    public function getValue($name)
     {
         return isset($this->values[$name]) ? $this->values[$name] : false;
     }

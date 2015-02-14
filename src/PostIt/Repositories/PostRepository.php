@@ -5,6 +5,8 @@ namespace PostIt\Repositories;
 use \Exception;
 use \DateTime;
 
+use PostIt\Application\Paginator;
+
 /**
  *
  * @package    PostIt
@@ -49,7 +51,7 @@ class PostRepository extends EntityRepository
         }
     }
 
-    public function findPaged($offset, $limit)
+    public function findPaged(Paginator $paginator)
     {
         try
         {
@@ -64,8 +66,8 @@ class PostRepository extends EntityRepository
             ->leftJoin('p', 'images', 'i', 'p.id = i.post_id')
             ->where('p.published < CURRENT_TIMESTAMP()')
             ->orderBy('p.date_created', 'DESC')
-            ->setMaxResults($limit)
-            ->setFirstResult($offset);
+            ->setMaxResults($paginator->getLimit())
+            ->setFirstResult($paginator->getOffset());
 
             // echo $qrb->getSQL();
 

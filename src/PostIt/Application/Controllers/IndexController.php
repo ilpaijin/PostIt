@@ -21,21 +21,20 @@ class IndexController extends Controller
 {
     public function welcomeAction(Request $request, $page)
     {
-        //pagination logic, to be moved away
-        $offset = $page ? $page['page'] : 0;
-        $limit = 1;
+        $paginator = $this->getPaginator();
+        $paginator->set($page);
 
         $this->postRepository = new PostRepository($this->container->get('db'));
         $posts_count = $this->postRepository->countAll();
 
-        if ($offset && $offset > ($posts_count['count']-1)) {
+        if ($paginator->getOffset() && $paginator->getOffset() > ($posts_count['count']-1)) {
             return $this->render('error',array('status' => '404 HTTP_NOT_FOUND'), 404);
         }
-
+        
         return $this->render('front/welcome', array(
-            'posts' => $this->postRepository->findPaged($offset, $limit),
+            'posts' => $this->postRepository->findPaged($paginator),
             'posts_count' => $posts_count,
-            'current_page' => $offset,
+            'current_page' => $paginator->getOffset(),
             'user' => Session::get('user'),
             'img_path' => $this->container->get('config')->get('cdn_static')
         ));
