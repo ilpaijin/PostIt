@@ -4,6 +4,8 @@ use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 use PostIt\Application\Environment;
 use PostIt\Application\Config;
+use PostIt\Application\Session;
+use PostIt\Repositories\UserRepository;
 use PostIt\Entities\User;
 
 /*
@@ -85,4 +87,17 @@ $app->containerSet('twig', $twig);
 |--------------------------------------------------------------------------
 |
 */
-$app->containerSet('user', new User());
+$userRepo = new UserRepository($app->containerGet('db'));
+$user = new User();
+
+if (Session::get('user_logged')) {
+
+    if ($userData = $userRepo->findOne(Session::get('user_id'))) {
+        $user
+            ->setId($userData['id'])
+            ->setUsername($userData['username'])
+            ->setLogged(true);
+    }
+}
+
+$app->containerSet('user', $user);

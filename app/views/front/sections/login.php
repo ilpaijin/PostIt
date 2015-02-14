@@ -1,8 +1,8 @@
 <div id="login-account" class="login-ui pull-right account">
     <img id="account-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=36"
     alt="">
-    {% if user %}
-        <span> {{ user }} </span>
+    {% if user.isLogged() %}
+        <span> {{ user.username }} </span>
         <a href="/logout" rel="nofollow">logout</a>
     {% else %}
         <a class="toggle-form" href="#" rel="nofollow">Login</a>

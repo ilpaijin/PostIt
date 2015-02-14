@@ -69,7 +69,7 @@ class PostRepository extends EntityRepository
             ->setMaxResults($paginator->getLimit())
             ->setFirstResult($paginator->getOffset());
 
-            // echo $qrb->getSQL();
+            // echo $qrb->getSQL(); exit;
 
             $stmt = $qrb->execute();
 

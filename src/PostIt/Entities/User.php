@@ -23,9 +23,11 @@ class User
     protected $username;
 
     /**
-     * @var string
+     * [$logged description]
+     *
+     * @var bool
      */
-    protected $password;
+    protected $logged = false;
 
     /**
      * Get the value of Id
@@ -71,6 +73,30 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * User is logged?
+     *
+     * @return bool
+     */
+    public function isLogged()
+    {
+        return $this->logged;
+    }
+
+    /**
+     * Set the value of [$logged description]
+     *
+     * @param bool logged
+     *
+     * @return self
+     */
+    public function setLogged($logged)
+    {
+        $this->logged = $logged;
 
         return $this;
     }

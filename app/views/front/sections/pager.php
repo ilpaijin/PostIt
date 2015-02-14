@@ -1,7 +1,7 @@
 <!-- Pager -->
 <ul class="pager">
     <li class="previous">
-        {% if current_page < (posts_count.count-1) %}
+        {% if current_page < (posts_count-1) %}
         <a href="/p/{{current_page+1}}">←  Older</a>
         {% else %}
         <span>←  Older</span>

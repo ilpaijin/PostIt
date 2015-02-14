@@ -45,7 +45,7 @@ class EntityRepository
             $qrb->select('*')->from($this->table)->where($qrb->expr()->eq('id', $id));
             $stmt = $qrb->execute();
 
-            return $stmt->fetchAll();
+            return reset($stmt->fetchAll());
 
         } catch (Exception $e)
         {
