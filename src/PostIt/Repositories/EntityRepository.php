@@ -38,8 +38,7 @@ class EntityRepository
     */
     public function findOne($id)
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb->select('*')->from($this->table)->where($qrb->expr()->eq('id', $id));
@@ -47,8 +46,7 @@ class EntityRepository
 
             return reset($stmt->fetchAll());
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
@@ -58,8 +56,7 @@ class EntityRepository
      */
     public function findAll()
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb->select('*')->from($this->table);
@@ -67,8 +64,7 @@ class EntityRepository
 
             return $stmt->fetchAll();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }

@@ -31,8 +31,7 @@ class PostRepository extends EntityRepository
      */
     public function findAll()
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -45,16 +44,14 @@ class PostRepository extends EntityRepository
 
             return $stmt->fetchAll();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }
 
     public function findPaged(Paginator $paginator)
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $now = new DateTime('now');
@@ -75,16 +72,14 @@ class PostRepository extends EntityRepository
 
             return $stmt->fetchAll();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }
 
     public function countAll()
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -98,8 +93,7 @@ class PostRepository extends EntityRepository
 
             return $stmt->fetch();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }
@@ -109,8 +103,7 @@ class PostRepository extends EntityRepository
         $pub = isset($post['post_published']) ? $post['post_published'] . date('H:i:s') : 'now';
         $pub = new DateTime($pub);
 
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -131,11 +124,10 @@ class PostRepository extends EntityRepository
                 ->setParameter(4, $pub->format('Y:m:d H:i:s'));
                 // ->setParameter(3, new DateTime(), \Doctrine\DBAL\Types\Type::DATETIME);
 
-            $stmt = $qrb->execute();
+            $qrb->execute();
 
             return $this->dbHandler->lastInsertId();
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }

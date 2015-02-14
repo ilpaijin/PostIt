@@ -26,8 +26,7 @@ class UserRepository extends EntityRepository
     */
     public function findAll()
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -38,8 +37,7 @@ class UserRepository extends EntityRepository
 
             return $stmt->fetchAll();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }
@@ -53,8 +51,7 @@ class UserRepository extends EntityRepository
      */
     public function authenticate($username, $password)
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -67,8 +64,7 @@ class UserRepository extends EntityRepository
 
             return $stmt->fetch();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }

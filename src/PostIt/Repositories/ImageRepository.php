@@ -28,8 +28,7 @@ class ImageRepository extends EntityRepository
     */
     public function findAll()
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -42,16 +41,14 @@ class ImageRepository extends EntityRepository
 
             return $stmt->fetchAll();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             throw $e;
         }
     }
 
     public function save($image)
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -67,20 +64,18 @@ class ImageRepository extends EntityRepository
                 ->setParameter(1, $image['name'])
                 ->setParameter(2, 'unused');
 
-            $stmt = $qrb->execute();
+            $qrb->execute();
 
             return $this->dbHandler->lastInsertId();
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             return false;
         }
     }
 
     public function update($targetId, $data)
     {
-        try
-        {
+        try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
             $qrb
@@ -92,12 +87,11 @@ class ImageRepository extends EntityRepository
                 ->setParameter(1, $data)
                 ->setParameter(2, $targetId);
 
-            $stmt = $qrb->execute();
+            $qrb->execute();
 
             return true;
 
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             return false;
         }
     }
