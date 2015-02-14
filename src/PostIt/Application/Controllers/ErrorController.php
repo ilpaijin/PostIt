@@ -15,13 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 */
 class ErrorController extends Controller
 {
-    public function notFound(Request $request)
+    public function notFound(Request $request, $message)
     {
-        return $this->render('error', array('status' => '404 HTTP_NOT_FOUND'), 404);
+        return $this->render('error', array('status' => '404 HTTP_NOT_FOUND', 'message' => $message), 404);
     }
 
-    public function server(Request $request)
+    public function server(Request $request, $message)
     {
-        return $this->render('error', array('status' => '500 INTERNAL_SERVER_ERROR'), 500);
+        return $this->render('error', array('status' => '500 INTERNAL_SERVER_ERROR', 'message' => $message), 500);
     }
 }

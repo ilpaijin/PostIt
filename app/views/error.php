@@ -32,6 +32,10 @@
                         {{status}}
                     </p>
 
+                    <p>
+                        {{message}}
+                    </p>
+
                 </div>
 
             </div>
