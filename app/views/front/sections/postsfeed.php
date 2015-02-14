@@ -1,4 +1,7 @@
 {% if posts %}
+
+    {% include 'front/sections/pager.php' %}
+
     {% for post in posts %}
         <h2>
             #{{ post.id }}
