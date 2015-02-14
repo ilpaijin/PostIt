@@ -48,13 +48,9 @@ class AdminController extends Controller
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
-        $posts = $this->getPostrepository()->findAll();
-
-        $users = $this->getUserrepository()->findAll();
-
         return $this->render('back/admin', array(
-            'posts' => $posts,
-            'users' => $users,
+            'posts' => $this->getPostrepository()->findAll(),
+            'users' => $this->getUserrepository()->findAll(),
             'user' => $this->containerGet('user'),
             'page' => end($page),
             'img_path' => $this->containerGet('config')->get('cdn_static')

@@ -34,7 +34,7 @@ class PostController extends Controller
             return $this->render('error', array('status' => '405 HTTP_METHOD_NOT_ALLOWED'), 405);
         }
 
-        if (!Session::get('user')) {
+        if (!$this->isLoggedUser()) {
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 

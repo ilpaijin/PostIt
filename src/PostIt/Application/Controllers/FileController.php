@@ -20,23 +20,23 @@ class FileController extends Controller
 {
     public function createImageAction(Request $request)
     {
-        // if (!$request->isXmlHttpRequest()) {
-        //     return new HttpFoundation\Response('Method Not Allowed', 405);
-        // }
+        if (!$request->isXmlHttpRequest()) {
+            return new HttpFoundation\Response('Method Not Allowed', 405);
+        }
 
-        if (!$this->containerGet('user')->isLogged()) {
+        if (!$this->isLoggedUser()) {
             $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
         //This should be a service
-        // if ($image = $this->uploadImage($_FILES['post_image'])) {
-        //     $imageRepo = new ImageRepository($this->container->get('db'));
-        //     $id = $this->saveImage($image, $imageRepo);
-        //
-        //     return new HttpFoundation\JsonResponse($id);
-        // }
-        //
-        return new HttpFoundation\Response(array('response' => 'error'));
+        if ($image = $this->uploadImage($_FILES['post_image'])) {
+            $imageRepo = new ImageRepository($this->container->get('db'));
+            $id = $this->saveImage($image, $imageRepo);
+
+            return new HttpFoundation\JsonResponse($id);
+        }
+
+        return new HttpFoundation\JsonResponse(array('response' => 'error'));
     }
 
     public function uploadImage($image)
