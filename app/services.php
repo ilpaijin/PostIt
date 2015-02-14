@@ -92,6 +92,9 @@ $user = new User();
 
 if (Session::get('user_logged')) {
 
+    // Is this user really valid?
+    // check User Agent, check db...
+     
     if ($userData = $userRepo->findOne(Session::get('user_id'))) {
         $user
             ->setId($userData['id'])
