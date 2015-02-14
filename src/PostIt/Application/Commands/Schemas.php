@@ -74,19 +74,22 @@ class Schemas
         $images->addColumn('name', 'string', array("length" => 100));
         $images->addColumn('status', 'enum');
 
-        $posts->addForeignKeyConstraint($users,
+        $posts->addForeignKeyConstraint(
+            $users,
             array("user_id"),
             array("id"),
             array("onDelete" => "CASCADE", "onUpdate" => "NO ACTION")
         );
 
-        $comments->addForeignKeyConstraint($users,
+        $comments->addForeignKeyConstraint(
+            $users,
             array("user_id"),
             array("id"),
             array("onDelete" => "CASCADE", "onUpdate" => "NO ACTION")
         );
 
-        $images->addForeignKeyConstraint($posts,
+        $images->addForeignKeyConstraint(
+            $posts,
             array("post_id"),
             array("id"),
             array("onDelete" => "NO ACTION", "onUpdate" => "NO ACTION")

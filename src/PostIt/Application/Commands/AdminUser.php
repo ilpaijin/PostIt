@@ -34,7 +34,7 @@ class AdminUser
 
         $stmt = $qrb->execute();
 
-        if(!$stmt->fetch()) {
+        if (!$stmt->fetch()) {
             $qrb
                 ->insert('users')
                 ->values( array(
