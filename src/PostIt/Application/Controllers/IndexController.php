@@ -35,7 +35,7 @@ class IndexController extends Controller
      */
     public function welcomeAction(Request $request, $page)
     {
-        $this->postRepository = $this->getPostrepository($this->container->get('db'));
+        $this->postRepository = $this->getPostrepository();
 
         $paginator = $this->getPaginator();
         $paginator->set($page);

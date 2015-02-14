@@ -15,6 +15,9 @@ class Session
     public static function start()
     {
         session_name('postit');
+
+        session_regenerate_id(true);
+
         session_start();
     }
 

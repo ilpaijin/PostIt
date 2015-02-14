@@ -20,36 +20,44 @@ use PostIt\Application\Config;
 */
 class AdminController extends Controller
 {
+    /**
+    * Dependencies
+    *
+    * @var array
+    */
+    protected $dependencies = array(
+        'postrepository' => 'PostIt\\Repositories\\PostRepository',
+        'userrepository' => 'PostIt\\Repositories\\UserRepository'
+    );
+
     public function welcomeAction(Request $request)
     {
-        if (!$this->container->get('user')->isLogged()) {
+        if (!$this->isLoggedUser()) {
             header("Location: /", 302);
             exit(0);
         }
 
         return $this->render('back/admin', array(
-            'user' => $this->container->get('user')
+            'user' => $this->containerGet('user')
         ));
     }
 
     public function sectionAction(Request $request, $page)
     {
-        if (!$this->container->get('user')->isLogged())  {
+        if (!$this->isLoggedUser())  {
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
-        $this->postRepository = new PostRepository($this->container->get('db'));
-        $posts = $this->postRepository->findAll();
+        $posts = $this->getPostrepository()->findAll();
 
-        $this->userRepository = new UserRepository($this->container->get('db'));
-        $users = $this->userRepository->findAll();
+        $users = $this->getUserrepository()->findAll();
 
         return $this->render('back/admin', array(
             'posts' => $posts,
             'users' => $users,
-            'user' => $this->container->get('user'),
+            'user' => $this->containerGet('user'),
             'page' => end($page),
-            'img_path' => $this->container->get('config')->get('cdn_static')
+            'img_path' => $this->containerGet('config')->get('cdn_static')
         ));
     }
 

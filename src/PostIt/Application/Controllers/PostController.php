@@ -19,6 +19,15 @@ use PostIt\Application\Session;
 */
 class PostController extends Controller
 {
+    /**
+    * Dependencies
+    *
+    * @var array
+    */
+    protected $dependencies = array(
+        'postrepository' => 'PostIt\\Repositories\\PostRepository'
+    );
+
     public function createPostAction(Request $request)
     {
         if (!$request->isXmlHttpRequest()) {
@@ -29,8 +38,7 @@ class PostController extends Controller
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
-        $postRepo = new PostRepository($this->container->get('db'));
-
+        $postRepo = $this->getPostrepository();
 
         //This should be a service
         if ($postId = $postRepo->create($request->request->all(), Session::get('user_id'))) {

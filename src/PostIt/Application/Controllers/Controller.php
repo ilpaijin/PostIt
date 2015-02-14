@@ -75,12 +75,58 @@ abstract class Controller
     }
 
     /**
+     * Wrapper for user login check
+     *
+     * @return bool
+     */
+    public function isLoggedUser()
+    {
+        return $this->container->get('user')->isLogged();
+    }
+
+    /**
+     * If is a Repository subclass, a db instance will be injected.
+     *
+     * @param string $class
+     * @return bool
+     */
+    public function isARepository($class)
+    {
+        return is_subclass_of($class, 'PostIt\Repositories\EntityRepository');
+    }
+
+    /**
+    * soLid Liskov principle, useful for testing
+    *
+    * @param string $name
+    */
+    public function containerGet($name)
+    {
+        return $this->container->get($name);
+    }
+
+    /**
+    * soLid Liskov principle, useful for testing
+    *
+    * @param string $name
+    * @param mixed $value $name
+    *
+    * @return mixed
+    */
+    public function containerSet($name, $value)
+    {
+        return $this->container->set($name, $value);
+    }
+
+    /**
      * Dependencies getter
      *
      * @return mixed
      */
     public function __call($method, $attr)
     {
+        $knownDeps = '';
+
         $deps = strtolower(substr($method, 3));
 
         if (substr($method, 0, 3) === 'get') {
@@ -89,9 +135,16 @@ abstract class Controller
                 return false;
             }
 
-            if (!$this->container->getService($deps)) {
-                $this->container->setService($deps, new $this->dependencies[$deps](reset($attr)));
+            if ($this->container->getService($deps)) {
+
+                return $this->container->getService($deps);
             }
+
+            if ($this->isARepository($this->dependencies[$deps])) {
+                $knownDeps = $this->container->get('db');
+            }
+
+            $this->container->setService($deps, new $this->dependencies[$deps]($knownDeps));
 
             return $this->container->getService($deps);
         }

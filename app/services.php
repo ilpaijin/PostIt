@@ -61,10 +61,7 @@ $app->containerSet('config', new Config(__DIR__."/config/".Environment::detect()
 |--------------------------------------------------------------------------
 |
 */
-$db = \Doctrine\DBAL\DriverManager::getConnection(
-$app->containerGet('config')->get('db'),
-new \Doctrine\DBAL\Configuration()
-);
+$db = \Doctrine\DBAL\DriverManager::getConnection($app->containerGet('config')->get('db'), new \Doctrine\DBAL\Configuration());
 $app->containerSet('db', $db);
 
 /*
@@ -91,10 +88,13 @@ $userRepo = new UserRepository($app->containerGet('db'));
 $user = new User();
 
 if (Session::get('user_logged')) {
-
     // Is this user really valid?
     // check User Agent, check db...
-     
+
+    if (Session::get('userAgent') !== $_SERVER['HTTP_USER_AGENT']) {
+        // Are you you?
+    }
+
     if ($userData = $userRepo->findOne(Session::get('user_id'))) {
         $user
             ->setId($userData['id'])

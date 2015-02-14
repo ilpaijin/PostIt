@@ -18,26 +18,32 @@ use PostIt\Application\Session;
  */
 class LoginController extends Controller
 {
+    /**
+    * Dependencies
+    *
+    * @var array
+    */
+    protected $dependencies = array(
+        'userrepository' => 'PostIt\\Repositories\\UserRepository'
+    );
+
     public function loginAction(Request $request)
     {
         if (!$request->isXmlHttpRequest()) {
             $this->render('error', array('status' => '405 HTTP_METHOD_NOT_ALLOWED'), 405);
         }
 
-        $userRepo = new UserRepository($this->container->get('db'));
-
-        $authenticated = $userRepo->authenticate($request->request->get('username'), $request->request->get('password'));
+        $authenticated = $this->getUserrepository()->authenticate($request->request->get('username'), $request->request->get('password'));
 
         if ($authenticated) {
 
             if ($request->request->get('remember-me')) {
 
-                session_regenerate_id(true);
-
                 Session::set('user_logged', true);
                 Session::set('user_id', $authenticated['id']);
+                Session::set('userAgent', $_SERVER['HTTP_USER_AGENT']);
 
-                setcookie('pitpit', hash('sha256', $_SERVER['HTTP_USER_AGENT']), (time()*60), '/', '', false, true);
+                setcookie('pitpit', hash('sha256', $_SERVER['HTTP_USER_AGENT']), (time()+(60*60*24*14)), '/', '', false, true);
             }
 
             return new HttpFoundation\JsonResponse(array('username' => $authenticated['username']));
