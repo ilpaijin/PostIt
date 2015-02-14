@@ -24,11 +24,18 @@ abstract class Controller
     protected $container;
 
     /**
+    * Class dependencies
+    *
+    * @var array
+    */
+    protected $dependencies = array();
+
+    /**
      * Dependencies
      *
      * @var array
      */
-    protected $dependencies = array(
+    protected $commonDependencies = array(
         'paginator' => 'PostIt\\Application\\Paginator'
     );
 
@@ -40,6 +47,8 @@ abstract class Controller
     public function __construct(Containerable $container)
     {
         $this->container = $container;
+
+        $this->mergeDependencies();
     }
 
     /**
@@ -56,23 +65,32 @@ abstract class Controller
     }
 
     /**
-     * Dependencies getter
+     * Merge the common and the class dependencies
      *
      * @return array
      */
+    public function mergeDependencies()
+    {
+        $this->dependencies = array_merge($this->dependencies, $this->commonDependencies);
+    }
+
+    /**
+     * Dependencies getter
+     *
+     * @return mixed
+     */
     public function __call($method, $attr)
     {
-        $prefix = substr($method, 0, 3);
         $deps = strtolower(substr($method, 3));
 
-        if ($prefix === 'get') {
+        if (substr($method, 0, 3) === 'get') {
 
             if (!isset($this->dependencies[$deps])) {
                 return false;
             }
 
             if (!$this->container->getService($deps)) {
-                $this->container->setService($deps, new $this->dependencies[$deps]);
+                $this->container->setService($deps, new $this->dependencies[$deps](reset($attr)));
             }
 
             return $this->container->getService($deps);

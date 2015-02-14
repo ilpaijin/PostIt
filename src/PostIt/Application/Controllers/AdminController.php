@@ -22,19 +22,19 @@ class AdminController extends Controller
 {
     public function welcomeAction(Request $request)
     {
-        if (!Session::get('user')) {
+        if (!$this->container->get('user')->isLogged()) {
             header("Location: /", 302);
             exit(0);
         }
 
         return $this->render('back/admin', array(
-            'user' => Session::get('user')
+            'user' => $this->container->get('user')
         ));
     }
 
     public function sectionAction(Request $request, $page)
     {
-        if (!Session::get('user')) {
+        if (!$this->container->get('user')->isLogged())  {
             return $this->render('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401);
         }
 
@@ -47,7 +47,7 @@ class AdminController extends Controller
         return $this->render('back/admin', array(
             'posts' => $posts,
             'users' => $users,
-            'user' => Session::get('user'),
+            'user' => $this->container->get('user'),
             'page' => end($page),
             'img_path' => $this->container->get('config')->get('cdn_static')
         ));

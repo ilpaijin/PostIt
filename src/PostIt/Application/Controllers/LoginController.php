@@ -26,18 +26,21 @@ class LoginController extends Controller
 
         $userRepo = new UserRepository($this->container->get('db'));
 
-        $user = $userRepo->authenticate($request->request->get('username'), $request->request->get('password'));
+        $authenticated = $userRepo->authenticate($request->request->get('username'), $request->request->get('password'));
 
-        if ($user) {
+        if ($authenticated) {
 
             if ($request->request->get('remember-me')) {
-                Session::set('user', $user['username']);
-                Session::set('user_id', $user['id']);
+
+                session_regenerate_id(true);
+
+                Session::set('user_logged', true);
+                Session::set('user_id', $authenticated['id']);
 
                 setcookie('pitpit', hash('sha256', $_SERVER['HTTP_USER_AGENT']), (time()*60), '/', '', false, true);
             }
 
-            return new HttpFoundation\JsonResponse(array('username' => $user['username']));
+            return new HttpFoundation\JsonResponse(array('username' => $authenticated['username']));
         }
 
         return HttpFoundation\JsonResponse(array('error', array('status' => '401 HTTP_UNAUTHORIZED'), 401));
@@ -45,6 +48,8 @@ class LoginController extends Controller
 
     public function logoutAction(Request $request)
     {
+        setcookie('pitpit', '', time() - 1, '/', '', false, true);
+
         //this should be a logout service
         Session::end();
 

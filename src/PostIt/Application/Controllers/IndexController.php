@@ -3,7 +3,6 @@
 namespace PostIt\Application\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 use PostIt\Repositories\PostRepository;
 use PostIt\Application\Session;
@@ -19,23 +18,38 @@ use PostIt\Application\Config;
  */
 class IndexController extends Controller
 {
+    /**
+     * Dependencies
+     *
+     * @var array
+     */
+    protected $dependencies = array(
+        'postrepository' => 'PostIt\\Repositories\\PostRepository'
+    );
+
+    /**
+     * Home page
+     *
+     * @param Symfony\Component\HttpFoundation\Request $request
+     * @param Symfony\Component\HttpFoundation\Response $page
+     */
     public function welcomeAction(Request $request, $page)
     {
+        $this->postRepository = $this->getPostrepository($this->container->get('db'));
+
         $paginator = $this->getPaginator();
         $paginator->set($page);
+        $paginator->setCounts($this->postRepository->countAll());
 
-        $this->postRepository = new PostRepository($this->container->get('db'));
-        $posts_count = $this->postRepository->countAll();
-
-        if ($paginator->getOffset() && $paginator->getOffset() > ($posts_count['count']-1)) {
+        if (!$paginator->hasPage()) {
             return $this->render('error',array('status' => '404 HTTP_NOT_FOUND'), 404);
         }
-        
+
         return $this->render('front/welcome', array(
             'posts' => $this->postRepository->findPaged($paginator),
-            'posts_count' => $posts_count,
+            'posts_count' => $paginator->getCounts(),
             'current_page' => $paginator->getOffset(),
-            'user' => Session::get('user'),
+            'user' => $this->container->get('user'),
             'img_path' => $this->container->get('config')->get('cdn_static')
         ));
     }
