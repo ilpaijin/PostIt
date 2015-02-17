@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/ilpaijin/PostIt.svg?branch=master)](https://travis-ci.org/ilpaijin/PostIt)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7dc42434-ac1a-44c4-be15-c0d9e232d80f/small.png)](https://insight.sensiolabs.com/projects/7dc42434-ac1a-44c4-be15-c0d9e232d80f)
+
 Creating a blog for fun, from scratch
 
 ### Login postit-local/admin or postit-local
