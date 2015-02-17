@@ -3,7 +3,6 @@
 namespace PostIt\Application\Controllers;
 
 use PostIt\Application\Contracts\Containerable;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

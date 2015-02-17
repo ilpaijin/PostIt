@@ -2,11 +2,12 @@
 
 namespace PostIt\Application\Controllers;
 
+use Exception;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation;
 
 use PostIt\Repositories\ImageRepository;
-use PostIt\Application\Session;
 
 /**
 *

@@ -2,6 +2,8 @@
 
 namespace PostIt\Repositories;
 
+use Exception;
+
 /**
 *
 * @package    PostIt

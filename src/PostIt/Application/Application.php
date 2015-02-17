@@ -7,9 +7,7 @@ use \Exception;
 use PostIt\Application\Contracts\Containerable;
 use PostIt\Application\Controllers;
 
-use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
@@ -112,7 +110,7 @@ class Application
      *
      * @param Symfony\Component\Routing\RequestContext $context
      */
-    private function matchRequest($context)
+    private function matchRequest(RequestContext $context)
     {
         $matcher = new UrlMatcher($this->routes, $context);
 

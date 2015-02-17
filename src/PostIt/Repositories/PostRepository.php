@@ -54,8 +54,6 @@ class PostRepository extends EntityRepository
         try {
             $qrb = $this->dbHandler->createQueryBuilder();
 
-            $now = new DateTime('now');
-
             $qrb
             ->select('p.*', 'u.username as author', 'i.title as image_title', 'i.name as image_name')
             ->from($this->table, 'p')
@@ -65,8 +63,6 @@ class PostRepository extends EntityRepository
             ->orderBy('p.date_created', 'DESC')
             ->setMaxResults($paginator->getLimit())
             ->setFirstResult($paginator->getOffset());
-
-            // echo $qrb->getSQL(); exit;
 
             $stmt = $qrb->execute();
 

@@ -1,8 +1,8 @@
 <?php
 
-use \Exception;
-
 namespace PostIt\Repositories;
+
+use \Exception;
 
 /**
 *

@@ -2,7 +2,7 @@
 
 namespace PostIt\Application;
 
-use Symfony\Component\HttpFoundation\File\Exception;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 /**
 * A very basic DI Container

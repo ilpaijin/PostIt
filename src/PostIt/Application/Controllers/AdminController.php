@@ -3,12 +3,6 @@
 namespace PostIt\Application\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-use PostIt\Repositories\PostRepository;
-use PostIt\Repositories\UserRepository;
-use PostIt\Application\Session;
-use PostIt\Application\Config;
 
 /**
 *

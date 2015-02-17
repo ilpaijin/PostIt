@@ -5,7 +5,6 @@ namespace PostIt\Application\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation;
 
-use PostIt\Repositories\PostRepository;
 use PostIt\Repositories\ImageRepository;
 use PostIt\Application\Session;
 

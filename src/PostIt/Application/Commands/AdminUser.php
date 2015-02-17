@@ -3,7 +3,6 @@
 namespace PostIt\Application\Commands;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Schema\Schema;
 
 /**
 *

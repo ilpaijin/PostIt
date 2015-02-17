@@ -4,10 +4,6 @@ namespace PostIt\Application\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
 
-use PostIt\Repositories\PostRepository;
-use PostIt\Application\Session;
-use PostIt\Application\Config;
-
 /**
  *
  * @package    PostIt
