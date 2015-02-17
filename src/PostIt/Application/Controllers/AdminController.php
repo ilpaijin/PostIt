@@ -27,8 +27,7 @@ class AdminController extends Controller
     public function welcomeAction(Request $request)
     {
         if (!$this->isLoggedUser()) {
-            header("Location: /", 302);
-            exit(0);
+            return $this->render('generic/redirect', array('page' => '/'), 302);
         }
 
         return $this->render('back/admin', array(
