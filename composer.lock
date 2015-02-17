@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c9b78f2f47b24e6f7ddc44857034d69",
+    "hash": "4634ffd665a361856a1bdcae428acad7",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -966,12 +966,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b078f7c0fef79a9f04f9aa80cabae849808bcd30"
+                "reference": "eb6ad0d4f250c34f394b77b41e5f5e5ba5dd7773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b078f7c0fef79a9f04f9aa80cabae849808bcd30",
-                "reference": "b078f7c0fef79a9f04f9aa80cabae849808bcd30",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/eb6ad0d4f250c34f394b77b41e5f5e5ba5dd7773",
+                "reference": "eb6ad0d4f250c34f394b77b41e5f5e5ba5dd7773",
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +1030,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-02-09 06:36:07"
+            "time": "2015-02-09 07:13:08"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1560,12 +1560,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "4ec60561dd76a422865f057b25d895140c980aec"
+                "reference": "49231a9696082b1f0b0f1215b20606dc90c6e346"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/4ec60561dd76a422865f057b25d895140c980aec",
-                "reference": "4ec60561dd76a422865f057b25d895140c980aec",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/49231a9696082b1f0b0f1215b20606dc90c6e346",
+                "reference": "49231a9696082b1f0b0f1215b20606dc90c6e346",
                 "shasum": ""
             },
             "require": {
@@ -1576,7 +1576,7 @@
                 "symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
             },
             "require-dev": {
-                "symfony/class-loader": "~2.2",
+                "symfony/class-loader": "~2.2|~3.0.0",
                 "symfony/http-foundation": "~2.1|~3.0.0",
                 "symfony/http-kernel": "~2.3.24|~2.5.9|~2.6,>=2.6.2|~3.0.0"
             },
@@ -1611,7 +1611,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2015-02-11 07:17:51"
+            "time": "2015-02-12 12:00:00"
         },
         {
             "name": "symfony/http-foundation",

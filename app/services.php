@@ -23,10 +23,10 @@ $app->containerSet('debug', Environment::isDevelopment() ? true : false);
 |
 */
 if ('cli' !== php_sapi_name()) {
-    ini_set('display_errors', 0);
+    error_reporting(0);
     ExceptionHandler::register($app->containerGet('debug'));
 } elseif (!ini_get('log_errors') || ini_get('error_log')) {
-    ini_set('display_errors', 1);
+    error_reporting(-1);
 }
 
 ErrorHandler::register();
