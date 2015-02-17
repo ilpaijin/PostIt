@@ -1,10 +1,12 @@
 {
-    "name":"PostIt!",
+    "name":"PostIt",
     "description":"Creating a blog for fun, from scratch",
-    "author": {
-        "name":"ilpaijin",
-        "email":"ilpaijin@gmail.com"
-    },
+    "authors": [
+        {
+            "name":"ilpaijin",
+            "email":"ilpaijin@gmail.com"
+        }
+    ],
     "require":{
         "php": ">=5.4.0",
         "monolog/monolog": "~1.4",
