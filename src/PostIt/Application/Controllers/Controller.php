@@ -4,6 +4,7 @@ namespace PostIt\Application\Controllers;
 
 use PostIt\Application\Contracts\Containerable;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  *
@@ -61,6 +62,19 @@ abstract class Controller
     public function render($view, $parameters = array(), $status = 200)
     {
         return new Response($this->container->get('twig')->render($view.'.php', $parameters), $status);
+    }
+
+    /**
+    * Proxy to Twig render method and return a new Response.
+    *
+    * @param  string  $view
+    * @param  array   $parameters
+    * @param  integer $status
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+    public function redirect($url, $status = 302, $headers = array())
+    {
+        return new RedirectResponse($url, $status, $headers);
     }
 
     /**

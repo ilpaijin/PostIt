@@ -58,6 +58,6 @@ class LoginController extends Controller
         //this should be a logout service
         Session::end();
 
-        return $this->render('generic/redirect', array('page' => '/'), 301);
+        return $this->redirect('/');
     }
 }
