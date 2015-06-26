@@ -29,6 +29,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
     public function testItProxiesContainerGetCalls()
     {
-        $this->assertTrue($this->app->containerGet('foo') === 'bar');
+        $this->assertTrue($this->app->containerGet('foo') === 'baz');
     }
 }
